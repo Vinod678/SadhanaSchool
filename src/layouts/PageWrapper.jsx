@@ -27,11 +27,11 @@ export default function PageWrapper({ children, title, subtitle, bgImage }) {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4 }}
             >
-              <img
+              {/* <img
                 src={logo}
                 alt="Sadhana School Logo"
                 className="w-20 h-20 rounded-full object-cover ring-4 ring-white/30 shadow-2xl"
-              />
+              /> */}
             </motion.div>
 
             <motion.h1

@@ -4,6 +4,7 @@ import PageWrapper from '../layouts/PageWrapper'
 import SectionTitle from '../components/SectionTitle'
 import StatsSection from '../sections/StatsSection'
 import CTASection from '../sections/CTASection'
+import img1 from '../assets/team/principal.jpg';
 
 const values = [
   { icon: Target, title: 'Our Mission', desc: 'To provide quality English medium education that develops intellectual curiosity, moral character, and life skills in every student, preparing them for success in a rapidly changing world.' },
@@ -12,7 +13,7 @@ const values = [
 ]
 
 const team = [
-  { name: 'K. Satyanarayana', role: 'Principal', exp: '25+ years', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80' },
+  { name: 'Annam. Bujji', role: 'Principal', exp: '25+ years', img: img1 },
   { name: 'P. Lakshmi Devi', role: 'Vice Principal', exp: '18+ years', img: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&q=80' },
   { name: 'M. Rajesh Kumar', role: 'Head of Science', exp: '15+ years', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80' },
   { name: 'S. Padmavathi', role: 'Head of Mathematics', exp: '12+ years', img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80' },
@@ -39,13 +40,13 @@ export default function About() {
                 Founded in 2005 by a group of passionate educators in Etikoppaka, Sadhana English Medium School was established with a single vision: to bring quality English medium education to the children of Visakhapatnam district.
               </p>
               <p className="text-gray-500 leading-relaxed mb-4">
-                Over 19 years, we have grown from a small school with 5 classrooms to a full-fledged institution with over 1200 students, 60 faculty members, and state-of-the-art infrastructure.
+                Over 19 years, we have grown from a small school with 5 classrooms to a full-fledged institution with over 600 students, 60 faculty members, and state-of-the-art infrastructure.
               </p>
               <p className="text-gray-500 leading-relaxed mb-8">
                 Our alumni are today's engineers, doctors, entrepreneurs, and social leaders — a testament to the foundation we help build in every child who walks through our doors.
               </p>
               <ul className="flex flex-col gap-3">
-                {['Established in 2005 in Etikoppaka', 'AP State Board affiliated', 'Classes I to X', '1200+ students enrolled', '98% board examination pass rate'].map((item, i) => (
+                {['Established in 2005 in Etikoppaka', 'AP State Board affiliated', 'Classes I to X', '600+ students enrolled', '98% board examination pass rate'].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 text-sm text-gray-600">
                     <CheckCircle size={16} className="text-[#F97316] shrink-0" />
                     {item}

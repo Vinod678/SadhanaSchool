@@ -11,8 +11,17 @@
 }
 
 * {
-  scroll-behavior: smooth;
   box-sizing: border-box;
+}
+
+/* CSS-level smooth scroll — fallback for plain anchor <a href="#"> links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Anchor target offset — compensates for sticky header so sections aren't hidden */
+[id] {
+  scroll-margin-top: 96px;
 }
 
 body {
@@ -25,3 +34,7 @@ body {
 #root {
   width: 100%;
 }
+
+/* Hide scrollbar for carousel */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }

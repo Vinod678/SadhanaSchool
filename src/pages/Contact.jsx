@@ -5,9 +5,17 @@ import PageWrapper from '../layouts/PageWrapper'
 import SectionTitle from '../components/SectionTitle'
 
 const contactInfo = [
-  { icon: MapPin, label: 'Address', value: 'Main Road, Etikoppaka, Visakhapatnam Dist., Andhra Pradesh – 531024', href: null },
-  { icon: Phone, label: 'Phone', value: '+91 94400 00000', href: 'tel:+919440000000' },
-  { icon: Mail, label: 'Email', value: 'info@sadhanaschool.edu.in', href: 'mailto:info@sadhanaschool.edu.in' },
+  { icon: MapPin, label: 'Address', value: 'Etikoppaka Village Yelamanchili Md Anakapalli Dt - Pin: 531082 Visakhapatnam - Andhra Pradesh', href: null },
+  {
+    icon: Phone,
+    label: 'Phone',
+    phones: [
+      { value: '+91 99491 35613', href: 'tel:+919949135613' },
+      { value: '+91 93932 14811', href: 'tel:+919393214811' },
+      { value: '+91 98493 91614', href: 'tel:+919849391614' },
+    ],
+  },
+  { icon: Mail, label: 'Email', value: 'sadhanaemupschool@gmail.com', href: 'mailto:sadhanaemupschool@gmail.com' },
   { icon: Clock, label: 'Office Hours', value: 'Mon–Fri: 8 AM – 5 PM | Sat: 8 AM – 1 PM', href: null },
 ]
 
@@ -40,7 +48,7 @@ export default function Contact() {
               </p>
 
               <div className="flex flex-col gap-5 mb-8">
-                {contactInfo.map(({ icon: Icon, label, value, href }) => (
+                {contactInfo.map(({ icon: Icon, label, value, href, phones }) => (
                   <motion.div
                     key={label}
                     className="flex items-start gap-4 p-4 bg-[#F9FAFB] rounded-xl border border-gray-100"
@@ -52,24 +60,24 @@ export default function Contact() {
                       <Icon size={18} className="text-white" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">{label}</p>
-                      {href
-                        ? <a href={href} className="text-[#0B3C6D] font-medium text-sm hover:text-[#F97316] transition-colors">{value}</a>
-                        : <p className="text-[#0B3C6D] font-medium text-sm">{value}</p>
+                      <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">{label}</p>
+                      {phones
+                        ? <div className="flex flex-col gap-1">
+                            {phones.map(p => (
+                              <a key={p.href} href={p.href} className="text-[#0B3C6D] font-medium text-sm hover:text-[#F97316] transition-colors">
+                                {p.value}
+                              </a>
+                            ))}
+                          </div>
+                        : href
+                          ? <a href={href} className="text-[#0B3C6D] font-medium text-sm hover:text-[#F97316] transition-colors">{value}</a>
+                          : <p className="text-[#0B3C6D] font-medium text-sm">{value}</p>
                       }
                     </div>
                   </motion.div>
                 ))}
               </div>
 
-              {/* Map placeholder */}
-              <div className="rounded-2xl overflow-hidden h-48 bg-blue-50 flex items-center justify-center border border-blue-100">
-                <div className="text-center text-gray-400">
-                  <MapPin size={32} className="mx-auto mb-2 text-[#0B3C6D]" />
-                  <p className="text-sm font-medium text-[#0B3C6D]">Sadhana School, Etikoppaka</p>
-                  <p className="text-xs text-gray-400">Visakhapatnam District, AP</p>
-                </div>
-              </div>
             </div>
 
             {/* Form */}
@@ -177,6 +185,63 @@ export default function Contact() {
               )}
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Google Maps ──────────────────────────────────────────────── */}
+      <section className="pb-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            {/* Section header */}
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 bg-[#0B3C6D] rounded-xl flex items-center justify-center shrink-0">
+                <MapPin size={20} className="text-white" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-[#F97316] uppercase tracking-widest">Location</p>
+                <h2 className="text-xl font-extrabold text-[#0B3C6D] leading-tight">How to Reach Us</h2>
+              </div>
+              <a
+                href="https://maps.google.com/?q=Sadhana+English+Medium+School+Etikoppaka"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-auto inline-flex items-center gap-2 text-xs font-semibold text-[#0B3C6D] hover:text-[#F97316] transition-colors"
+              >
+                Open in Google Maps ↗
+              </a>
+            </div>
+
+            {/* Map iframe */}
+            <div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-100" style={{ height: '450px' }}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.379592799764!2d82.7389447784064!3d17.489384057119505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39a2d7dbff5093%3A0xfc145658f7452548!2sSadhana%20English%20Medium%20School%20Etikoppaka!5e0!3m2!1sen!2sin!4v1777831437594!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Sadhana English Medium School – Etikoppaka"
+              />
+            </div>
+
+            {/* Address strip below map */}
+            <div className="mt-4 flex flex-wrap items-center gap-4 px-1">
+              <div className="flex items-center gap-2 text-sm text-gray-500">
+                <MapPin size={14} className="text-[#F97316] shrink-0" />
+                Etikoppaka Village, Yelamanchili Md, Anakapalli Dt, Visakhapatnam – AP 531082
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-500">
+                <Phone size={14} className="text-[#F97316] shrink-0" />
+                <a href="tel:+919949135613" className="hover:text-[#0B3C6D] transition-colors">+91 99491 35613</a>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
     </PageWrapper>

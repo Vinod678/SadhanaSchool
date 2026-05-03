@@ -4,8 +4,8 @@ import { Users, GraduationCap, Award, TrendingUp } from 'lucide-react'
 const iconMap = { Users, GraduationCap, Award, TrendingUp }
 
 const stats = [
-  { icon: 'Users', value: '1200+', label: 'Happy Students' },
-  { icon: 'GraduationCap', value: '60+', label: 'Expert Teachers' },
+  { icon: 'Users', value: '600+', label: 'Happy Students' },
+  { icon: 'GraduationCap', value: '30+', label: 'Expert Teachers' },
   { icon: 'Award', value: '19+', label: 'Years of Excellence' },
   { icon: 'TrendingUp', value: '98%', label: 'Pass Rate' },
 ]

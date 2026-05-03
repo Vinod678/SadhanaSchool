@@ -1,17 +1,25 @@
 import { useState, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { Menu, X, Phone } from 'lucide-react'
+import { Menu, X, Phone, Facebook, Instagram, Youtube } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import logo from '../assets/logo.png'
+import schoolData from '../data/schoolData.json'
 
 const navLinks = [
-  { label: 'Home', to: '/' },
-  { label: 'About Us', to: '/about' },
-  { label: 'Academics', to: '/academics' },
-  { label: 'Facilities', to: '/facilities' },
-  { label: 'Gallery', to: '/gallery' },
-  { label: 'News & Events', to: '/news' },
-  { label: 'Contact', to: '/contact' },
+  { label: 'Home',         to: '/' },
+  { label: 'About Us',     to: '/about' },
+  { label: 'Academics',    to: '/academics' },
+  { label: 'Achievements', to: '/achievements' },
+  { label: 'Facilities',   to: '/facilities' },
+  { label: 'Gallery',      to: '/gallery' },
+  { label: 'News & Events',to: '/news' },
+  { label: 'Contact',      to: '/contact' },
+]
+
+const socialLinks = [
+  { Icon: Facebook, href: schoolData.socialLinks.facebook, label: 'Facebook' },
+  { Icon: Instagram, href: schoolData.socialLinks.instagram, label: 'Instagram' },
+  { Icon: Youtube,  href: schoolData.socialLinks.youtube,   label: 'YouTube' },
 ]
 
 export default function Navbar() {
@@ -24,15 +32,41 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const linkClass = (isActive) =>
+    `px-2.5 py-1.5 text-[13px] font-medium rounded-lg transition-colors duration-200 whitespace-nowrap ${
+      isActive
+        ? 'text-[#0B3C6D] bg-blue-50 font-semibold'
+        : 'text-gray-600 hover:text-[#0B3C6D] hover:bg-blue-50'
+    }`
+
   return (
     <>
-      {/* Top bar */}
+      {/* Top info bar */}
       <div className="bg-[#0B3C6D] text-white text-xs py-2 px-4 hidden md:block">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <span>Sadhana English Medium School, Etikoppaka – Nurturing Minds, Building Futures</span>
-          <div className="flex items-center gap-1">
-            <Phone size={12} />
-            <span>+91 94400 00000</span>
+          <span className="text-blue-200">
+            Sadhana English Medium School, Etikoppaka – Nurturing Minds, Building Futures
+          </span>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-1.5">
+              <Phone size={11} />
+              <span>+91 99491 35613</span>
+            </div>
+            <span className="text-white/20">|</span>
+            <div className="flex items-center gap-2.5">
+              {socialLinks.map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="text-blue-200 hover:text-white transition-colors duration-200"
+                >
+                  <Icon size={13} />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -40,50 +74,45 @@ export default function Navbar() {
       {/* Main navbar */}
       <header className={`sticky top-0 z-40 w-full transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-white'}`}>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-16 md:h-18">
+
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group">
+            <Link to="/" className="flex items-center gap-3 group shrink-0">
               <img
                 src={logo}
                 alt="Sadhana School Logo"
-                className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover shadow-md ring-2 ring-[#0B3C6D] group-hover:ring-[#F97316] transition-all duration-300"
+                className="w-11 h-11 md:w-13 md:h-13 rounded-full object-cover shadow-md ring-2 ring-[#0B3C6D] group-hover:ring-[#F97316] transition-all duration-300"
               />
               <div className="leading-tight">
-                <p className="font-bold text-[#0B3C6D] text-sm md:text-base">Sadhana English Medium School</p>
+                <p className="font-bold text-[#0B3C6D] text-xs sm:text-sm">Sadhana English Medium School</p>
                 <p className="text-gray-500 text-xs hidden sm:block">Etikoppaka</p>
               </div>
             </Link>
 
-            {/* Desktop nav */}
-            <div className="hidden lg:flex items-center gap-1">
+            {/* Desktop nav — visible at xl (1280px+) */}
+            <div className="hidden xl:flex items-center gap-0.5">
               {navLinks.map(link => (
                 <NavLink
                   key={link.to}
                   to={link.to}
                   end={link.to === '/'}
-                  className={({ isActive }) =>
-                    `px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
-                      isActive
-                        ? 'text-[#0B3C6D] bg-blue-50 font-semibold'
-                        : 'text-gray-600 hover:text-[#0B3C6D] hover:bg-blue-50'
-                    }`
-                  }
+                  className={({ isActive }) => linkClass(isActive)}
                 >
                   {link.label}
                 </NavLink>
               ))}
             </div>
 
-            {/* CTA + Mobile toggle */}
-            <div className="flex items-center gap-3">
+            {/* CTA + hamburger */}
+            <div className="flex items-center gap-2 shrink-0">
               <Link
                 to="/contact"
-                className="hidden sm:inline-flex items-center gap-2 bg-[#F97316] hover:bg-[#ea6c0a] text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-200 shadow-sm"
+                className="hidden md:inline-flex items-center gap-1.5 bg-[#F97316] hover:bg-[#ea6c0a] text-white px-4 py-2 rounded-lg text-xs font-semibold transition-colors duration-200 shadow-sm whitespace-nowrap"
               >
                 Admission Enquiry
               </Link>
               <button
-                className="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+                className="xl:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
                 onClick={() => setOpen(!open)}
                 aria-label="Toggle menu"
               >
@@ -93,11 +122,11 @@ export default function Navbar() {
           </div>
         </nav>
 
-        {/* Mobile menu */}
+        {/* Mobile / tablet menu */}
         <AnimatePresence>
           {open && (
             <motion.div
-              className="lg:hidden bg-white border-t border-gray-100 shadow-xl"
+              className="xl:hidden bg-white border-t border-gray-100 shadow-xl"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
@@ -119,10 +148,27 @@ export default function Navbar() {
                     {link.label}
                   </NavLink>
                 ))}
+
+                {/* Social icons in mobile menu */}
+                <div className="flex items-center gap-3 px-4 pt-2 pb-1 border-t border-gray-100 mt-1">
+                  {socialLinks.map(({ Icon, href, label }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="w-8 h-8 bg-[#0B3C6D] text-white rounded-lg flex items-center justify-center hover:bg-[#F97316] transition-colors"
+                    >
+                      <Icon size={14} />
+                    </a>
+                  ))}
+                </div>
+
                 <Link
                   to="/contact"
                   onClick={() => setOpen(false)}
-                  className="mt-2 flex items-center justify-center gap-2 bg-[#F97316] text-white px-4 py-3 rounded-lg text-sm font-semibold"
+                  className="mt-1 flex items-center justify-center gap-2 bg-[#F97316] text-white px-4 py-3 rounded-lg text-sm font-semibold"
                 >
                   Admission Enquiry
                 </Link>

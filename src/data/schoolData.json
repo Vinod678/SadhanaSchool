@@ -4,14 +4,14 @@
     "location": "Etikoppaka",
     "tagline": "Nurturing Minds, Building Futures",
     "established": "2005",
-    "phone": "+91 94400 00000",
-    "email": "info@sadhanaschoool.edu.in",
-    "address": "Main Road, Etikoppaka, Visakhapatnam District, Andhra Pradesh - 531024",
+    "phone": "+91 99491 35613",
+    "email": "sadhanaemupschool@gmail.com",
+    "address": "Etikoppaka, Visakhapatnam District, Andhra Pradesh - 531082",
     "affiliatedTo": "Andhra Pradesh State Board of Secondary Education"
   },
   "stats": [
-    { "label": "Students", "value": "1200+", "icon": "Users" },
-    { "label": "Experienced Teachers", "value": "60+", "icon": "GraduationCap" },
+    { "label": "Students", "value": "600+", "icon": "Users" },
+    { "label": "Experienced Teachers", "value": "30+", "icon": "GraduationCap" },
     { "label": "Years of Excellence", "value": "19+", "icon": "Award" },
     { "label": "Pass Rate", "value": "98%", "icon": "TrendingUp" }
   ],
@@ -54,7 +54,7 @@
       "icon": "FlaskConical",
       "title": "Science Lab",
       "description": "Fully equipped science laboratories for Physics, Chemistry, and Biology for hands-on experiments.",
-      "image": "https://images.unsplash.com/photo-1532094349884-543559196f6b?w=600&q=80"
+      "image": "https://plus.unsplash.com/premium_photo-1664476285341-84be04ff268b?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 3,
@@ -75,70 +75,177 @@
       "icon": "Trophy",
       "title": "Sports & Games",
       "description": "Expansive sports grounds and indoor games facilities to promote physical fitness and team spirit.",
-      "image": "https://images.unsplash.com/photo-1546519638405-a4db1dbf6dc4?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1771257807779-a72e74deaa11?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 6,
       "icon": "Bus",
       "title": "Transport",
       "description": "Safe, reliable, and GPS-tracked school transport covering all major areas of Etikoppaka.",
-      "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&q=80"
+      "image": "https://plus.unsplash.com/premium_photo-1661634073903-2ecdccdfc8a2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    }
+  ],
+    "schoolBanner": [
+    {
+      "id": "Banners",
+      "category": "Banners",
+      "title": "Awards & Recognitions",
+      "cover": "/src/assets/awards/navodayaAward.jpg",
+      "images": [        
+        { "id": "ba25-1", "src": "/src/assets/awards/principal_award.jpg", "alt": "Award" },
+        { "id": "ba25-2", "src": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80", "alt": "ClassRoom" },  
+        { "id": "ba25-3", "src": "/src/assets/awards/navodayaAward.jpg", "alt": "Navodaya Award" },
+        { "id": "ba25-4", "src": "/src/assets/school_kids/school_prayer.jpg", "alt": "Morning Prayer" }
+      ]
     }
   ],
   "gallery": [
     {
-      "id": 1,
-      "src": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80",
-      "alt": "Smart Classroom",
-      "category": "Academics"
+      "id": "Achievements",
+      "category": "Achievements",
+      "title": "Awards & Recognitions",
+      "cover": "/src/assets/awards/awards_2.jpg",
+      "images": [        
+        { "id": "sd25-2", "src": "/src/assets/awards/principal_award.jpg", "alt": "Award" },     
+        { "id": "sd25-1", "src": "/src/assets/awards/navodayaAward.jpg", "alt": "Navodaya Award" },
+        { "id": "sd25-2", "src": "/src/assets/awards/awards_2.jpg", "alt": "Award" },     
+        { "id": "sd25-1", "src": "/src/assets/awards/navodhaya_news.jpg", "alt": "Navodaya Award" }
+      ]
     },
     {
-      "id": 2,
-      "src": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=80",
-      "alt": "Students in classroom",
-      "category": "Academics"
+      "id": "sports-day-2025",
+      "category": "Sports",
+      "title": "Sports Day 2025",
+      "cover": "https://images.unsplash.com/photo-1646399366797-110d11d37905?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "images": [
+        { "id": "sd25-1", "src": "https://images.unsplash.com/photo-1624193634221-33b652971323?q=80&w=1292&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "100m Sprint" },
+        { "id": "sd25-2", "src": "https://images.unsplash.com/photo-1624193634221-33b652971323?q=80&w=1292&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Basketball Final" },
+        { "id": "sd25-3", "src": "https://images.unsplash.com/photo-1677852201205-6b0e50708242?w=800&q=80", "alt": "Football Match" },
+        { "id": "sd25-4", "src": "https://images.unsplash.com/photo-1677852201205-6b0e50708242?w=800&q=80", "alt": "Cricket Competition" },
+        { "id": "sd25-5", "src": "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=800&q=80", "alt": "Yoga" }
+      ]
     },
     {
-      "id": 3,
-      "src": "https://images.unsplash.com/photo-1546519638405-a4db1dbf6dc4?w=600&q=80",
-      "alt": "Sports Activity",
-      "category": "Sports"
+      "id": "sports-day-2024",
+      "category": "Sports",
+      "title": "Sports Day 2024",
+      "cover": "https://images.unsplash.com/photo-1677852201205-6b0e50708242?w=800&q=80",
+      "images": [
+        { "id": "sd24-1", "src": "https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=800&q=80", "alt": "Athletics Event" },
+        { "id": "sd24-2", "src": "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=800&q=80", "alt": "Sprint Race" },
+        { "id": "sd24-3", "src": "https://images.unsplash.com/photo-1546519638405-a4db1dbf6dc4?w=800&q=80", "alt": "Team Sports" },
+        { "id": "sd24-4", "src": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80", "alt": "Prize Ceremony" }
+      ]
     },
     {
-      "id": 4,
-      "src": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80",
-      "alt": "Library",
-      "category": "Facilities"
+      "id": "independence-day-sports",
+      "category": "Sports",
+      "title": "Independence Day Sports",
+      "cover": "https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=800&q=80",
+      "images": [
+        { "id": "ids-1", "src": "https://images.unsplash.com/photo-1677852201205-6b0e50708242?w=800&q=80", "alt": "Football Match" },
+        { "id": "ids-2", "src": "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=800&q=80", "alt": "Sack Race" },
+        { "id": "ids-3", "src": "https://images.unsplash.com/photo-1677852201205-6b0e50708242?w=800&q=80", "alt": "Kabaddi Match" },
+        { "id": "ids-4", "src": "https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=800&q=80", "alt": "Long Jump" }
+      ]
     },
     {
-      "id": 5,
-      "src": "https://images.unsplash.com/photo-1532094349884-543559196f6b?w=600&q=80",
-      "alt": "Science Lab",
-      "category": "Facilities"
+      "id": "classroom-activities",
+      "category": "Academics",
+      "title": "Classroom Activities",
+      "cover": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80",
+      "images": [
+        { "id": "ca-1", "src": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80", "alt": "Smart Board Lesson" },
+        { "id": "ca-2", "src": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80", "alt": "Group Discussion" },
+        { "id": "ca-3", "src": "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80", "alt": "Students Reading" },
+        { "id": "ca-4", "src": "https://images.unsplash.com/photo-1588072432836-e10032774350?w=800&q=80", "alt": "Classroom Session" },
+        { "id": "ca-5", "src": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80", "alt": "Library Study" }
+      ]
     },
     {
-      "id": 6,
-      "src": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80",
-      "alt": "Annual Day",
-      "category": "Events"
+      "id": "science-projects",
+      "category": "Academics",
+      "title": "Science Projects",
+      "cover": "https://plus.unsplash.com/premium_photo-1683140893042-af3aa516ae40?w=600&q=80",
+      "images": [
+        { "id": "sp-1", "src": "https://plus.unsplash.com/premium_photo-1683140893042-af3aa516ae40?w=800&q=80", "alt": "Chemistry Experiment" },
+        { "id": "sp-2", "src": "https://images.unsplash.com/photo-1532094349884-543559373b0c?w=800&q=80", "alt": "Lab Work" },
+        { "id": "sp-3", "src": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80", "alt": "Computer Projects" },
+        { "id": "sp-4", "src": "https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=800&q=80", "alt": "Biology Study" }
+      ]
     },
     {
-      "id": 7,
-      "src": "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80",
-      "alt": "Students studying",
-      "category": "Academics"
+      "id": "annual-examinations",
+      "category": "Academics",
+      "title": "Annual Examinations",
+      "cover": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",
+      "images": [
+        { "id": "ae-1", "src": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80", "alt": "Exam Hall" },
+        { "id": "ae-2", "src": "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=800&q=80", "alt": "Students Writing" },
+        { "id": "ae-3", "src": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80", "alt": "Focused Students" },
+        { "id": "ae-4", "src": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80", "alt": "Result Day" }
+      ]
     },
     {
-      "id": 8,
-      "src": "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80",
-      "alt": "Cultural Program",
-      "category": "Events"
+      "id": "smart-classrooms-labs",
+      "category": "Facilities",
+      "title": "Smart Classrooms & Labs",
+      "cover": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80",
+      "images": [
+        { "id": "scl-1", "src": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80", "alt": "Smart Classroom" },
+        { "id": "scl-2", "src": "https://plus.unsplash.com/premium_photo-1683140893042-af3aa516ae40?w=800&q=80", "alt": "Science Lab" },
+        { "id": "scl-3", "src": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80", "alt": "Computer Lab" },
+        { "id": "scl-4", "src": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=800&q=80", "alt": "Physics Equipment" }
+      ]
     },
     {
-      "id": 9,
-      "src": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80",
-      "alt": "School Canteen",
-      "category": "Facilities"
+      "id": "library-campus",
+      "category": "Facilities",
+      "title": "Library & Campus",
+      "cover": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80",
+      "images": [
+        { "id": "lc-1", "src": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80", "alt": "Library Hall" },
+        { "id": "lc-2", "src": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80", "alt": "School Canteen" },
+        { "id": "lc-3", "src": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80", "alt": "Sports Ground" },
+        { "id": "lc-4", "src": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80", "alt": "Campus View" }
+      ]
+    },
+    {
+      "id": "annual-day-2025",
+      "category": "Events",
+      "title": "Annual Day 2025",
+      "cover": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80",
+      "images": [
+        { "id": "ad25-1", "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80", "alt": "Annual Day Stage" },
+        { "id": "ad25-2", "src": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80", "alt": "Chief Guest Address" },
+        { "id": "ad25-3", "src": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80", "alt": "Cultural Performance" },
+        { "id": "ad25-4", "src": "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&q=80", "alt": "Prize Distribution" },
+        { "id": "ad25-5", "src": "https://images.unsplash.com/photo-1549451371-64aa98a6f660?w=800&q=80", "alt": "Group Photo" }
+      ]
+    },
+    {
+      "id": "cultural-fest",
+      "category": "Events",
+      "title": "Cultural Fest – Sadhana Utsav",
+      "cover": "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80",
+      "images": [
+        { "id": "cf-1", "src": "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&q=80", "alt": "Cultural Dance" },
+        { "id": "cf-2", "src": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80", "alt": "Drama Performance" },
+        { "id": "cf-3", "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80", "alt": "Art Exhibition" },
+        { "id": "cf-4", "src": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80", "alt": "Music Show" }
+      ]
+    },
+    {
+      "id": "republic-day",
+      "category": "Events",
+      "title": "Republic Day Celebrations",
+      "cover": "https://plus.unsplash.com/premium_photo-1682092645573-edbd43c0dff2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "images": [
+        { "id": "rd-1", "src": "https://plus.unsplash.com/premium_photo-1682092645573-edbd43c0dff2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Flag Hoisting" },
+        { "id": "rd-2", "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80", "alt": "March Past" },
+        { "id": "rd-3", "src": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80", "alt": "Cultural Show" },
+        { "id": "rd-4", "src": "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&q=80", "alt": "Students Gathering" }
+      ]
     }
   ],
   "events": [
@@ -151,7 +258,7 @@
       "title": "Annual Sports Day 2026",
       "description": "Join us for a day filled with athletic competitions, team spirit, and celebration of our students' physical achievements.",
       "category": "Sports",
-      "image": "https://images.unsplash.com/photo-1546519638405-a4db1dbf6dc4?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1677852201205-6b0e50708242?w=800&q=80"
     },
     {
       "id": 2,
@@ -203,9 +310,8 @@
     }
   ],
   "socialLinks": {
-    "facebook": "#",
-    "twitter": "#",
-    "instagram": "#",
-    "youtube": "#"
+    "facebook": "https://www.facebook.com/sadhanaetikoppaka",
+    "instagram": "https://www.instagram.com/sadhanaetikoppaka",
+    "youtube": "https://www.youtube.com/@sadhanaenglishmediumschool511"
   }
 }

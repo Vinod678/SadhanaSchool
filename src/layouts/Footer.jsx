@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube } from 'lucide-react'
+import { Phone, Mail, MapPin, Facebook, Instagram, Youtube } from 'lucide-react'
 import logo from '../assets/logo.png'
+import schoolData from '../data/schoolData.json'
 
 const quickLinks = [
   { label: 'Home', to: '/' },
@@ -35,14 +36,16 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { Icon: Facebook, href: '#' },
-                { Icon: Twitter, href: '#' },
-                { Icon: Instagram, href: '#' },
-                { Icon: Youtube, href: '#' },
-              ].map(({ Icon, href }, i) => (
+                { Icon: Facebook, href: schoolData.socialLinks.facebook, label: 'Facebook' },
+                { Icon: Instagram, href: schoolData.socialLinks.instagram, label: 'Instagram' },
+                { Icon: Youtube, href: schoolData.socialLinks.youtube, label: 'YouTube' },
+              ].map(({ Icon, href, label }) => (
                 <a
-                  key={i}
+                  key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
                   className="w-9 h-9 bg-white/10 hover:bg-[#F97316] rounded-lg flex items-center justify-center transition-colors duration-200"
                 >
                   <Icon size={16} />
@@ -80,19 +83,19 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#F97316] mt-0.5 shrink-0" />
                 <span className="text-blue-100 text-sm leading-relaxed">
-                  Main Road, Etikoppaka,<br />Visakhapatnam Dist., AP – 531024
+                  Etikoppaka,<br />Visakhapatnam Dist., AP – 531082
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-[#F97316] shrink-0" />
                 <a href="tel:+919440000000" className="text-blue-100 hover:text-white text-sm transition-colors">
-                  +91 94400 00000
+                  +91 99491 35613
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-[#F97316] shrink-0" />
-                <a href="mailto:info@sadhanaschool.edu.in" className="text-blue-100 hover:text-white text-sm transition-colors">
-                  info@sadhanaschool.edu.in
+                <a href="mailto:sadhanaemupschool@gmail.com" className="text-blue-100 hover:text-white text-sm transition-colors">
+                  sadhanaemupschool@gmail.com
                 </a>
               </li>
             </ul>
