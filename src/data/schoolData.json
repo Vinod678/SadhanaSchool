@@ -1,0 +1,211 @@
+{
+  "school": {
+    "name": "Sadhana English Medium School",
+    "location": "Etikoppaka",
+    "tagline": "Nurturing Minds, Building Futures",
+    "established": "2005",
+    "phone": "+91 94400 00000",
+    "email": "info@sadhanaschoool.edu.in",
+    "address": "Main Road, Etikoppaka, Visakhapatnam District, Andhra Pradesh - 531024",
+    "affiliatedTo": "Andhra Pradesh State Board of Secondary Education"
+  },
+  "stats": [
+    { "label": "Students", "value": "1200+", "icon": "Users" },
+    { "label": "Experienced Teachers", "value": "60+", "icon": "GraduationCap" },
+    { "label": "Years of Excellence", "value": "19+", "icon": "Award" },
+    { "label": "Pass Rate", "value": "98%", "icon": "TrendingUp" }
+  ],
+  "features": [
+    {
+      "id": 1,
+      "icon": "BookOpen",
+      "title": "Quality Education",
+      "description": "Comprehensive curriculum aligned with modern standards, ensuring every student achieves academic excellence."
+    },
+    {
+      "id": 2,
+      "icon": "Users",
+      "title": "Experienced Faculty",
+      "description": "Highly qualified and dedicated teachers who inspire, motivate and guide students toward their best potential."
+    },
+    {
+      "id": 3,
+      "icon": "Star",
+      "title": "Holistic Development",
+      "description": "Beyond academics — we nurture creativity, leadership, sports, and life skills for all-round growth."
+    },
+    {
+      "id": 4,
+      "icon": "Shield",
+      "title": "Safe Environment",
+      "description": "A secure, inclusive, and child-friendly campus where every student feels safe, valued, and supported."
+    }
+  ],
+  "facilities": [
+    {
+      "id": 1,
+      "icon": "Monitor",
+      "title": "Smart Classrooms",
+      "description": "Technology-enabled classrooms with interactive boards for engaging, modern learning experiences.",
+      "image": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80"
+    },
+    {
+      "id": 2,
+      "icon": "FlaskConical",
+      "title": "Science Lab",
+      "description": "Fully equipped science laboratories for Physics, Chemistry, and Biology for hands-on experiments.",
+      "image": "https://images.unsplash.com/photo-1532094349884-543559196f6b?w=600&q=80"
+    },
+    {
+      "id": 3,
+      "icon": "Library",
+      "title": "Library",
+      "description": "A rich collection of books, magazines, and digital resources to foster a love for reading and research.",
+      "image": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80"
+    },
+    {
+      "id": 4,
+      "icon": "Cpu",
+      "title": "Computer Lab",
+      "description": "Modern computer lab with high-speed internet to develop digital literacy and coding skills.",
+      "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80"
+    },
+    {
+      "id": 5,
+      "icon": "Trophy",
+      "title": "Sports & Games",
+      "description": "Expansive sports grounds and indoor games facilities to promote physical fitness and team spirit.",
+      "image": "https://images.unsplash.com/photo-1546519638405-a4db1dbf6dc4?w=600&q=80"
+    },
+    {
+      "id": 6,
+      "icon": "Bus",
+      "title": "Transport",
+      "description": "Safe, reliable, and GPS-tracked school transport covering all major areas of Etikoppaka.",
+      "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&q=80"
+    }
+  ],
+  "gallery": [
+    {
+      "id": 1,
+      "src": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80",
+      "alt": "Smart Classroom",
+      "category": "Academics"
+    },
+    {
+      "id": 2,
+      "src": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=80",
+      "alt": "Students in classroom",
+      "category": "Academics"
+    },
+    {
+      "id": 3,
+      "src": "https://images.unsplash.com/photo-1546519638405-a4db1dbf6dc4?w=600&q=80",
+      "alt": "Sports Activity",
+      "category": "Sports"
+    },
+    {
+      "id": 4,
+      "src": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80",
+      "alt": "Library",
+      "category": "Facilities"
+    },
+    {
+      "id": 5,
+      "src": "https://images.unsplash.com/photo-1532094349884-543559196f6b?w=600&q=80",
+      "alt": "Science Lab",
+      "category": "Facilities"
+    },
+    {
+      "id": 6,
+      "src": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80",
+      "alt": "Annual Day",
+      "category": "Events"
+    },
+    {
+      "id": 7,
+      "src": "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80",
+      "alt": "Students studying",
+      "category": "Academics"
+    },
+    {
+      "id": 8,
+      "src": "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80",
+      "alt": "Cultural Program",
+      "category": "Events"
+    },
+    {
+      "id": 9,
+      "src": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80",
+      "alt": "School Canteen",
+      "category": "Facilities"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "date": "2026-05-15",
+      "month": "May",
+      "day": "15",
+      "year": "2026",
+      "title": "Annual Sports Day 2026",
+      "description": "Join us for a day filled with athletic competitions, team spirit, and celebration of our students' physical achievements.",
+      "category": "Sports",
+      "image": "https://images.unsplash.com/photo-1546519638405-a4db1dbf6dc4?w=600&q=80"
+    },
+    {
+      "id": 2,
+      "date": "2026-06-01",
+      "month": "Jun",
+      "day": "01",
+      "year": "2026",
+      "title": "New Academic Year 2026–27 Begins",
+      "description": "Admission open for all classes. Orientation program for new students and parents. Welcoming the next generation of learners.",
+      "category": "Academic",
+      "image": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80"
+    },
+    {
+      "id": 3,
+      "date": "2026-04-14",
+      "month": "Apr",
+      "day": "14",
+      "year": "2026",
+      "title": "Cultural Fest – Sadhana Utsav",
+      "description": "Annual cultural extravaganza showcasing talents in dance, music, drama, and art. All parents and community members are welcome.",
+      "category": "Cultural",
+      "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80"
+    }
+  ],
+  "academics": [
+    {
+      "id": 1,
+      "level": "Primary",
+      "classes": "Class I – V",
+      "icon": "BookOpen",
+      "description": "Building strong foundations in literacy, numeracy, and curiosity through activity-based learning.",
+      "subjects": ["English", "Mathematics", "EVS", "Telugu", "Hindi", "Art & Craft", "Physical Education"]
+    },
+    {
+      "id": 2,
+      "level": "Middle School",
+      "classes": "Class VI – VIII",
+      "icon": "School",
+      "description": "Developing critical thinking, scientific inquiry, and social awareness for holistic growth.",
+      "subjects": ["English", "Mathematics", "Science", "Social Studies", "Telugu", "Hindi", "Computer Science"]
+    },
+    {
+      "id": 3,
+      "level": "Secondary",
+      "classes": "Class IX – X",
+      "icon": "GraduationCap",
+      "description": "Comprehensive SSC board preparation with focus on both academics and life skills development.",
+      "subjects": ["English", "Mathematics", "Physical Science", "Biological Science", "Social Studies", "Telugu/Hindi"]
+    }
+  ],
+  "socialLinks": {
+    "facebook": "#",
+    "twitter": "#",
+    "instagram": "#",
+    "youtube": "#"
+  }
+}
