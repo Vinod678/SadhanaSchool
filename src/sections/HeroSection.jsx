@@ -163,7 +163,7 @@ export default function HeroSection() {
                       onClick={() => setVideoOpen(true)}
                     >
                       <img
-                        src="/src/assets/school_kids/kids_classroom.jpg"
+                        src="/school_kids/kids_classroom.jpg"
                         alt="Sadhana School"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />

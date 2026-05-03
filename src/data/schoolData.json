@@ -90,12 +90,12 @@
       "id": "Banners",
       "category": "Banners",
       "title": "Awards & Recognitions",
-      "cover": "/src/assets/awards/navodayaAward.jpg",
+      "cover": "/awards/navodayaAward.jpg",
       "images": [        
-        { "id": "ba25-1", "src": "/src/assets/awards/principal_award.jpg", "alt": "Award" },
+        { "id": "ba25-1", "src": "/awards/principal_award.jpg", "alt": "Award" },
         { "id": "ba25-2", "src": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80", "alt": "ClassRoom" },  
-        { "id": "ba25-3", "src": "/src/assets/awards/navodayaAward.jpg", "alt": "Navodaya Award" },
-        { "id": "ba25-4", "src": "/src/assets/school_kids/school_prayer.jpg", "alt": "Morning Prayer" }
+        { "id": "ba25-3", "src": "/awards/navodayaAward.jpg", "alt": "Navodaya Award" },
+        { "id": "ba25-4", "src": "/school_kids/school_prayer.jpg", "alt": "Morning Prayer" }
       ]
     }
   ],
@@ -104,12 +104,12 @@
       "id": "Achievements",
       "category": "Achievements",
       "title": "Awards & Recognitions",
-      "cover": "/src/assets/awards/awards_2.jpg",
+      "cover": "/awards/awards_2.jpg",
       "images": [        
-        { "id": "sd25-2", "src": "/src/assets/awards/principal_award.jpg", "alt": "Award" },     
-        { "id": "sd25-1", "src": "/src/assets/awards/navodayaAward.jpg", "alt": "Navodaya Award" },
-        { "id": "sd25-2", "src": "/src/assets/awards/awards_2.jpg", "alt": "Award" },     
-        { "id": "sd25-1", "src": "/src/assets/awards/navodhaya_news.jpg", "alt": "Navodaya Award" }
+        { "id": "sd25-2", "src": "/awards/principal_award.jpg", "alt": "Award" },     
+        { "id": "sd25-1", "src": "/awards/navodayaAward.jpg", "alt": "Navodaya Award" },
+        { "id": "sd25-2", "src": "/awards/awards_2.jpg", "alt": "Award" },     
+        { "id": "sd25-1", "src": "/awards/navodhaya_news.jpg", "alt": "Navodaya Award" }
       ]
     },
     {
