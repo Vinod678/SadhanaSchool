@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, PlayCircle } from 'lucide-react'
+import logo from '../assets/logo.png'
 
 export default function HeroSection() {
   return (
@@ -16,14 +17,22 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
           <div>
+            {/* Logo + badge row */}
             <motion.div
-              className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs font-semibold px-4 py-2 rounded-full mb-6"
+              className="flex items-center gap-4 mb-6"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <span className="w-2 h-2 bg-[#F97316] rounded-full animate-pulse" />
-              Admissions Open 2026–27
+              <img
+                src={logo}
+                alt="Sadhana School Logo"
+                className="w-16 h-16 rounded-full object-cover ring-2 ring-white/50 shadow-xl"
+              />
+              <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs font-semibold px-4 py-2 rounded-full">
+                <span className="w-2 h-2 bg-[#F97316] rounded-full animate-pulse" />
+                Admissions Open 2026–27
+              </div>
             </motion.div>
 
             <motion.h1

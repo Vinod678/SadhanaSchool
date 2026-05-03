@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { GraduationCap, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube } from 'lucide-react'
+import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube } from 'lucide-react'
+import logo from '../assets/logo.png'
 
 const quickLinks = [
   { label: 'Home', to: '/' },
@@ -19,11 +20,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                <GraduationCap size={26} className="text-[#F97316]" />
-              </div>
+              <img
+                src={logo}
+                alt="Sadhana School Logo"
+                className="w-16 h-16 rounded-full object-cover ring-2 ring-white/30 shadow-lg shrink-0"
+              />
               <div>
-                <p className="font-bold text-white text-base">Sadhana School</p>
+                <p className="font-bold text-white text-base leading-snug">Sadhana English Medium School</p>
                 <p className="text-blue-200 text-xs">Etikoppaka</p>
               </div>
             </div>

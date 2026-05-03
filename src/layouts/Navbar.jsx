@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { Menu, X, GraduationCap, Phone } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import logo from '../assets/logo.png'
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -42,11 +43,13 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-[#0B3C6D] rounded-xl flex items-center justify-center shadow-md group-hover:bg-[#F97316] transition-colors duration-300">
-                <GraduationCap size={24} className="text-white" />
-              </div>
+              <img
+                src={logo}
+                alt="Sadhana School Logo"
+                className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover shadow-md ring-2 ring-[#0B3C6D] group-hover:ring-[#F97316] transition-all duration-300"
+              />
               <div className="leading-tight">
-                <p className="font-bold text-[#0B3C6D] text-sm md:text-base">Sadhana School</p>
+                <p className="font-bold text-[#0B3C6D] text-sm md:text-base">Sadhana English Medium School</p>
                 <p className="text-gray-500 text-xs hidden sm:block">Etikoppaka</p>
               </div>
             </Link>
