@@ -5,7 +5,7 @@ import PageWrapper from '../layouts/PageWrapper'
 import SectionTitle from '../components/SectionTitle'
 
 const contactInfo = [
-  { icon: MapPin, label: 'Address', value: 'Etikoppaka Village Yelamanchili Md Anakapalli Dt - Pin: 531082 Visakhapatnam - Andhra Pradesh', href: null },
+  { icon: MapPin, label: 'Address', value: 'Etikoppaka Village Yelamanchili Md Anakapalli Dt - Pin: 531082 - Andhra Pradesh', href: null },
   {
     icon: Phone,
     label: 'Phone',
@@ -234,7 +234,7 @@ export default function Contact() {
             <div className="mt-4 flex flex-wrap items-center gap-4 px-1">
               <div className="flex items-center gap-2 text-sm text-gray-500">
                 <MapPin size={14} className="text-[#F97316] shrink-0" />
-                Etikoppaka Village, Yelamanchili Md, Anakapalli Dt, Visakhapatnam – AP 531082
+                Etikoppaka Village, Yelamanchili Md, Anakapalli Dt – AP 531082
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-500">
                 <Phone size={14} className="text-[#F97316] shrink-0" />

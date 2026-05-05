@@ -59,7 +59,7 @@ export default function AboutSection() {
               align="left"
             />
             <p className="text-gray-500 leading-relaxed mb-6">
-              Sadhana English Medium School, established in Etikoppaka in 2005, has been a beacon of quality education in Visakhapatnam district. Our school combines traditional values with modern teaching methods to prepare students for a rapidly changing world.
+              Sadhana English Medium School, established in Etikoppaka in 2005, has been a beacon of quality education in Anakapalli district. Our school combines traditional values with modern teaching methods to prepare students for a rapidly changing world.
             </p>
             <p className="text-gray-500 leading-relaxed mb-8">
               We believe every child is unique, and our dedicated team of educators work tirelessly to unlock each student's potential — academically, creatively, and socially.

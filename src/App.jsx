@@ -7,6 +7,9 @@ import Facilities from './pages/Facilities'
 import Gallery from './pages/Gallery'
 import News from './pages/News'
 import Contact from './pages/Contact'
+import PrincipalMessage from './pages/PrincipalMessage'
+import AdmissionProcedure from './pages/AdmissionProcedure'
+import FAQ from './pages/FAQ'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollReset from './components/ScrollReset'
 
@@ -23,6 +26,9 @@ export default function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/news" element={<News />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/principal-message" element={<PrincipalMessage />} />
+        <Route path="/admission-procedure" element={<AdmissionProcedure />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
       <ScrollToTop />
     </BrowserRouter>

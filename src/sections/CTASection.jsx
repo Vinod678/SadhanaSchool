@@ -36,7 +36,7 @@ export default function CTASection() {
               Enquire About Admission <ArrowRight size={18} />
             </Link>
             <a
-              href="tel:+919440000000"
+              href="tel:+919949135613"
               className="inline-flex items-center justify-center gap-2 bg-white/15 text-white border border-white/30 px-8 py-4 rounded-xl font-bold text-base hover:bg-white/25 transition-colors backdrop-blur-sm"
             >
               <Phone size={18} /> Call Us Now

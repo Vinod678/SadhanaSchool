@@ -5,8 +5,9 @@ import schoolData from '../data/schoolData.json'
 
 const quickLinks = [
   { label: 'Home', to: '/' },
-  { label: 'About Us', to: '/about' },
+  { label: 'About', to: '/about' },
   { label: 'Academics', to: '/academics' },
+  { label: 'Achievements', to: '/achievements' },
   { label: 'Facilities', to: '/facilities' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'News & Events', to: '/news' },
@@ -64,6 +65,7 @@ export default function Footer() {
                 <li key={link.to}>
                   <Link
                     to={link.to}
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     className="text-blue-100 hover:text-[#F97316] text-sm transition-colors duration-200 flex items-center gap-2 group"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#F97316] opacity-50 group-hover:opacity-100 transition-opacity" />
@@ -83,12 +85,12 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#F97316] mt-0.5 shrink-0" />
                 <span className="text-blue-100 text-sm leading-relaxed">
-                  Etikoppaka,<br />Visakhapatnam Dist., AP – 531082
+                  Etikoppaka,<br />Anakapalli Dist., AP – 531082
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-[#F97316] shrink-0" />
-                <a href="tel:+919440000000" className="text-blue-100 hover:text-white text-sm transition-colors">
+                <a href="tel:+919949135613" className="text-blue-100 hover:text-white text-sm transition-colors">
                   +91 99491 35613
                 </a>
               </li>

@@ -51,7 +51,7 @@ const institutional = [
     icon: GraduationCap,
     color: 'bg-purple-50 text-purple-600',
     border: 'hover:border-purple-200',
-    title: '100% SSC First Class – 3 Years',
+    title: '100% SSC First Class – 3 Years steak',
     description: 'Achieved 100% SSC First Class results for three consecutive years under Andhra University, Visakhapatnam.',
   },
 ]
