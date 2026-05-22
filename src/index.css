@@ -10,16 +10,17 @@
   --color-text: #1F2937;
 }
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* CSS-level smooth scroll — fallback for plain anchor <a href="#"> links */
+/* ── Global overflow guard — eliminates horizontal scroll on all devices ── */
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
-/* Anchor target offset — compensates for sticky header so sections aren't hidden */
+/* Anchor target offset — compensates for sticky header */
 [id] {
   scroll-margin-top: 96px;
 }
@@ -29,12 +30,22 @@ body {
   color: #1F2937;
   background-color: #F9FAFB;
   margin: 0;
+  overflow-x: clip;
+  width: 100%;
+  min-width: 320px;
+}
+
+/* Lock background scroll when mobile menu or modal is open */
+body.menu-open {
+  overflow: hidden;
+  touch-action: none;
 }
 
 #root {
   width: 100%;
+  overflow-x: clip;
 }
 
-/* Hide scrollbar for carousel */
+/* Hide scrollbar for carousel / thumbnail strip */
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }

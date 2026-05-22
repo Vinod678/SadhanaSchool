@@ -87,7 +87,8 @@ export default function Navbar() {
       <div className="bg-[#0B3C6D] text-white text-xs py-2 px-4 hidden md:block">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <span className="text-blue-200">
-            Sadhana English Medium School, Etikoppaka – Nurturing Minds, Building Futures
+            {/* Sadhana English Medium School, Etikoppaka – Nurturing Minds, Building Futures */}
+            Sadhana English Medium School, Etikoppaka — A School with a Difference
           </span>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1.5">
@@ -123,16 +124,18 @@ export default function Navbar() {
               <img
                 src={logo}
                 alt="Sadhana School Logo"
-                className="w-11 h-11 rounded-full object-cover shadow-md ring-2 ring-[#0B3C6D] group-hover:ring-[#F97316] transition-all duration-300"
+                className="w-12 h-12 rounded-full object-cover shadow-md ring-2 ring-[#0B3C6D] group-hover:ring-[#F97316] transition-all duration-300"
               />
               <div className="leading-tight">
-                <p className="font-bold text-[#0B3C6D] text-xs sm:text-sm">Sadhana English Medium School</p>
-                <p className="text-gray-500 text-xs hidden sm:block">Etikoppaka</p>
+                <p className="font-extrabold text-[#0B3C6D] text-sm sm:text-base leading-none">
+                  <span className="text-[#F97316]">Sadhana</span> English Medium School
+                </p>
+                <p className="text-gray-400 text-[11px] font-medium mt-0.5 tracking-wide">Etikoppaka · Est. 2005</p>
               </div>
             </a>
 
-            {/* Desktop nav — xl (1280px+) */}
-            <div className="hidden xl:flex items-center gap-0.5">
+            {/* Desktop nav — xl (1280px+), shifted right of logo */}
+            <div className="hidden xl:flex flex-1 justify-center items-center gap-0.5 pl-16 pr-2">
               {navItems.map(item => {
                 if (item.dropdown) {
                   const active = isDropdownActive(item.dropdown)

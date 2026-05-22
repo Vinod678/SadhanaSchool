@@ -14,9 +14,9 @@ const values = [
 
 const team = [
   { name: 'Annam Bujji, M.A., B.Ed.', role: 'Principal', exp: '25+ years', img: img1 },
-  { name: 'P. Lakshmi Devi', role: 'Vice Principal', exp: '18+ years', img: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&q=80' },
-  { name: 'M. Rajesh Kumar', role: 'Head of Science', exp: '15+ years', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80' },
-  { name: 'S. Padmavathi', role: 'Head of Mathematics', exp: '12+ years', img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80' },
+  { name: 'Vice Principal', role: 'Vice Principal', exp: '18+ years', img: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&q=80' },
+  { name: 'Science Teacher', role: 'Head of Science', exp: '15+ years', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80' },
+  { name: 'Mathematics Teacher', role: 'Head of Mathematics', exp: '12+ years', img: '' },
 ]
 
 export default function About() {
@@ -63,7 +63,7 @@ export default function About() {
               transition={{ duration: 0.6 }}
             >
               <img
-                src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=700&q=80"
+                src="src\assets\school_kids\school_prayer.jpg"
                 alt="School campus"
                 className="w-full h-full object-cover"
               />

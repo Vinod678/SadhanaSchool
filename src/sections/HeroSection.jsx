@@ -1,40 +1,41 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowRight, PlayCircle, X } from 'lucide-react'
+import { PlayCircle, X, ArrowRight, GraduationCap, Users, Trophy, Star } from 'lucide-react'
 import schoolData from '../data/schoolData.json'
 
-const YOUTUBE_ID = 'WzkYlKVzLLM' // Replace with your actual YouTube video ID
+const YOUTUBE_ID = 'WzkYlKVzLLM'
 
 const galleryImages = schoolData.schoolBanner
   .flatMap(album => album.images.map(img => ({ ...img, category: album.category })))
   .slice(0, 5)
 
-// slide variants — new slide pushes in from right, old exits to left
 const slideVariants = {
   enter: { x: '100%', opacity: 0 },
   center: { x: 0, opacity: 1 },
   exit: { x: '-100%', opacity: 0 },
 }
 
-const slideTransition = {
-  duration: 1.2,
-  ease: [0.4, 0, 0.2, 1],
-}
+const slideTransition = { duration: 1.2, ease: [0.4, 0, 0.2, 1] }
+
+const stats = [
+  { icon: Users,          value: '600+', label: 'Students'     },
+  { icon: GraduationCap,  value: '30+',  label: 'Teachers'     },
+  { icon: Trophy,         value: '19+',  label: 'Years'        },
+  { icon: Star,           value: '98%',  label: 'Pass Rate'    },
+]
 
 export default function HeroSection() {
   const [videoOpen, setVideoOpen] = useState(false)
-  // 0 = video card, 1-5 = gallery images
   const [current, setCurrent] = useState(0)
-  const totalSlides = 1 + galleryImages.length // 6
+  const totalSlides = 1 + galleryImages.length
 
-  // Auto-advance every 2 seconds
   useEffect(() => {
-    const t = setInterval(() => {
-      setCurrent(prev => (prev + 1) % totalSlides)
-    }, 5000)
-    return () => clearInterval(t)
-  }, [totalSlides])
+    // Slide 0 (video banner) gets 8 s; all other slides get 4 s
+    const delay = current === 0 ? 8000 : 4000
+    const t = setTimeout(() => setCurrent(p => (p + 1) % totalSlides), delay)
+    return () => clearTimeout(t)
+  }, [current, totalSlides])
 
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') setVideoOpen(false) }
@@ -42,159 +43,171 @@ export default function HeroSection() {
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = videoOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [videoOpen])
+
   return (
     <>
-      <section className="relative bg-gradient-to-br from-[#0B3C6D] via-[#0d4a87] to-[#1a5fa3] min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background blobs */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-white blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-[#F97316] blur-3xl" />
-          <div className="absolute top-1/2 left-1/3 w-64 h-64 rounded-full bg-blue-300 blur-3xl" />
+      {/* ── Hero ─────────────────────────────────────────────────────── */}
+      <section className="relative bg-gradient-to-br from-[#061e36] via-[#0B3C6D] to-[#0d4a87] min-h-[92vh] flex items-center overflow-hidden">
+
+        {/* Background texture / blobs */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#F97316]/10 blur-[120px]" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-blue-400/10 blur-[100px]" />
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0 opacity-[0.03]"
+            style={{ backgroundImage: 'repeating-linear-gradient(0deg,#fff 0,#fff 1px,transparent 1px,transparent 60px),repeating-linear-gradient(90deg,#fff 0,#fff 1px,transparent 1px,transparent 60px)' }} />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-            {/* ── Left: text ───────────────────────────────────────── */}
-            <div>
+            {/* ── Left: Text ─────────────────────────────────────────── */}
+            <div className="flex flex-col">
+
+              {/* Admissions badge */}
               <motion.div
-                className="flex items-center gap-4 mb-6"
-                initial={{ opacity: 0, y: -20 }}
+                className="mb-6"
+                initial={{ opacity: 0, y: -16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs font-semibold px-4 py-2 rounded-full">
-                  <span className="w-2 h-2 bg-[#F97316] rounded-full animate-pulse" />
+                <span className="inline-flex items-center gap-2 bg-[#F97316]/15 border border-[#F97316]/30 text-[#F97316] text-xs font-bold px-4 py-2 rounded-full tracking-wide uppercase">
+                  <span className="w-1.5 h-1.5 bg-[#F97316] rounded-full animate-pulse" />
                   Admissions Open 2026–27
-                </div>
+                </span>
               </motion.div>
 
-              <motion.h1
-                className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6"
+              {/* Main heading — "Welcome to" small, school name big */}
+              <motion.div
+                className="mb-6"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
+                transition={{ duration: 0.65, delay: 0.1 }}
               >
-                Welcome to{' '}
-                <span className="text-[#F97316]">Sadhana</span>{' '}
-                English Medium School
-              </motion.h1>
+                <p className="text-blue-300 text-base sm:text-lg font-medium mb-1 tracking-wide">
+                  Welcome to
+                </p>
+                <h1 className="leading-none">
+                  <span className="block text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight">
+                    Sadhana
+                  </span>
+                  <span className="block text-xl sm:text-2xl lg:text-3xl font-bold text-[#F97316] mt-2 leading-snug">
+                    English Medium School
+                  </span>
+                  <span className="block text-sm sm:text-base text-blue-300 font-medium mt-2 tracking-widest uppercase">
+                    Etikoppaka, Anakapalli
+                  </span>
+                </h1>
+              </motion.div>
 
+              {/* Tagline */}
               <motion.p
-                className="text-blue-100 text-lg leading-relaxed mb-8 max-w-lg"
+                className="text-blue-100/80 text-base leading-relaxed mb-8 max-w-md"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.25 }}
               >
-                Nurturing young minds with quality education, strong values, and holistic development since 2005 in the heart of Etikoppaka.
+                Nurturing young minds with quality English education, strong values, and holistic development since 2005.
               </motion.p>
 
+              {/* CTA — Admission Enquiry */}
               <motion.div
-                className="flex flex-wrap gap-4"
+                className="flex flex-col sm:flex-row gap-3"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.35 }}
               >
                 <Link
-                  to="/about"
-                  className="inline-flex items-center gap-2 bg-white text-[#0B3C6D] px-7 py-3.5 rounded-xl font-bold text-base hover:bg-blue-50 transition-colors shadow-lg"
-                >
-                  Learn More <ArrowRight size={18} />
-                </Link>
-                <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 bg-[#F97316] text-white px-7 py-3.5 rounded-xl font-bold text-base hover:bg-[#ea6c0a] transition-colors shadow-lg"
+                  className="inline-flex items-center justify-center gap-2 bg-[#F97316] hover:bg-[#ea6c0a] text-white px-7 py-3.5 rounded-xl font-bold text-sm sm:text-base transition-all duration-200 shadow-lg shadow-[#F97316]/25 hover:shadow-[#F97316]/40 hover:-translate-y-0.5"
                 >
-                  Admission Enquiry
+                  Enquire About Admission <ArrowRight size={17} />
                 </Link>
               </motion.div>
 
               {/* Stats strip */}
               <motion.div
-                className="flex flex-wrap gap-6 mt-12"
+                className="grid grid-cols-4 gap-4 mt-10 pt-8 border-t border-white/10"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.55 }}
               >
-                {[
-                  { value: '600+', label: 'Students' },
-                  { value: '30+', label: 'Teachers' },
-                  { value: '19+', label: 'Years' },
-                  { value: '98%', label: 'Pass Rate' },
-                ].map(({ value, label }) => (
-                  <div key={label} className="text-center">
-                    <p className="text-2xl font-extrabold text-[#F97316]">{value}</p>
-                    <p className="text-blue-200 text-xs font-medium">{label}</p>
+                {stats.map(({ icon: Icon, value, label }) => (
+                  <div key={label} className="flex flex-col items-center gap-1 group">
+                    <Icon size={16} className="text-[#F97316] opacity-70 group-hover:opacity-100 transition-opacity" />
+                    <p className="text-xl sm:text-2xl font-extrabold text-white leading-none">{value}</p>
+                    <p className="text-blue-300 text-[10px] sm:text-xs font-medium text-center">{label}</p>
                   </div>
                 ))}
               </motion.div>
             </div>
 
-            {/* ── Right: auto-advancing slideshow card ─────────────── */}
+            {/* ── Right: Slideshow card ───────────────────────────────── */}
             <motion.div
               className="relative"
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
+              {/* Decorative ring behind the card */}
+              <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#F97316]/20 to-blue-400/10 blur-xl" />
+
               {/* Floating badge */}
               <motion.div
-                className="absolute -top-4 -right-4 bg-[#F97316] text-white rounded-2xl p-4 shadow-xl text-center z-20 pointer-events-none"
+                className="absolute -top-4 -right-3 sm:-right-5 bg-gradient-to-br from-[#F97316] to-[#ea6c0a] text-white rounded-2xl p-3 sm:p-4 shadow-xl shadow-[#F97316]/30 text-center z-20 pointer-events-none"
                 animate={{ y: [0, -8, 0] }}
                 transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
               >
-                <p className="text-2xl font-extrabold">19+</p>
-                <p className="text-xs font-medium">Years of<br />Excellence</p>
+                <p className="text-2xl sm:text-3xl font-extrabold leading-none">19+</p>
+                <p className="text-[10px] sm:text-xs font-semibold mt-0.5 text-orange-100">Years of<br />Excellence</p>
               </motion.div>
 
-              {/* Slideshow card */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
+              {/* Card */}
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] ring-1 ring-white/10">
                 <AnimatePresence initial={false} mode="sync">
                   {current === 0 ? (
-                    /* ── Slide 0: School Tour video card ── */
                     <motion.div
                       key="video"
                       className="absolute inset-0 cursor-pointer group"
                       variants={slideVariants}
-                      initial="enter"
-                      animate="center"
-                      exit="exit"
+                      initial="enter" animate="center" exit="exit"
                       transition={slideTransition}
                       onClick={() => setVideoOpen(true)}
                     >
                       <img
                         src="/school_kids/kids_classroom.jpg"
                         alt="Sadhana School"
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0B3C6D]/70 to-[#0B3C6D]/10" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#061e36]/80 via-[#0B3C6D]/20 to-transparent" />
 
-                      {/* School Tour bar — sits above the dot indicators */}
-                      <div className="absolute bottom-10 left-5 right-5">
-                        <div className="bg-white/95 backdrop-blur rounded-xl p-3 flex items-center gap-3 shadow-lg group-hover:bg-white transition-colors duration-200">
+                      {/* Play bar */}
+                      <div className="absolute bottom-10 left-4 right-4">
+                        <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl group-hover:bg-white transition-colors duration-200">
                           <div className="relative shrink-0">
-                            <span className="absolute inset-0 rounded-lg bg-[#F97316]/40 group-hover:animate-ping" />
-                            <div className="w-11 h-11 bg-[#0B3C6D] group-hover:bg-[#F97316] rounded-lg flex items-center justify-center transition-colors duration-200 relative">
-                              <PlayCircle size={22} className="text-white" />
+                            <span className="absolute inset-0 rounded-xl bg-[#F97316]/30 animate-ping" />
+                            <div className="relative w-10 h-10 bg-[#0B3C6D] group-hover:bg-[#F97316] rounded-xl flex items-center justify-center transition-colors duration-200">
+                              <PlayCircle size={20} className="text-white" />
                             </div>
                           </div>
-                          <div>
-                            <p className="text-[#0B3C6D] font-bold text-sm leading-none mb-0.5">School Tour</p>
-                            <p className="text-gray-500 text-xs">Watch our campus video</p>
+                          <div className="flex-1">
+                            <p className="text-[#0B3C6D] font-bold text-sm leading-none">Campus Tour</p>
+                            <p className="text-gray-400 text-xs mt-0.5">Watch our school video</p>
                           </div>
-                          <div className="ml-auto text-xs font-semibold text-[#F97316] hidden sm:block">▶ Play</div>
+                          <span className="text-xs font-bold text-[#F97316] hidden sm:block">▶ Play</span>
                         </div>
                       </div>
                     </motion.div>
                   ) : (
-                    /* ── Slides 1-5: gallery images ── */
                     <motion.div
                       key={current}
                       className="absolute inset-0"
                       variants={slideVariants}
-                      initial="enter"
-                      animate="center"
-                      exit="exit"
+                      initial="enter" animate="center" exit="exit"
                       transition={slideTransition}
                     >
                       <img
@@ -203,11 +216,10 @@ export default function HeroSection() {
                         loading="lazy"
                         className="w-full h-full object-cover"
                       />
-                      {/* Subtle gradient + label */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0B3C6D]/50 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#061e36]/60 to-transparent" />
                       <div className="absolute bottom-4 left-4">
-                        <span className="bg-[#F97316] text-white text-xs font-bold px-3 py-1 rounded-full">
-                          {galleryImages[current - 1].category}
+                        <span className="bg-[#F97316] text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                          {galleryImages[current - 1].alt}
                         </span>
                       </div>
                     </motion.div>
@@ -220,15 +232,20 @@ export default function HeroSection() {
                     <button
                       key={i}
                       onClick={() => setCurrent(i)}
-                      className={`transition-all duration-300 rounded-full ${
-                        i === current
-                          ? 'w-5 h-2 bg-[#F97316]'
-                          : 'w-2 h-2 bg-white/50 hover:bg-white/80'
-                      }`}
-                      aria-label={`Go to slide ${i + 1}`}
+                      className={`transition-all duration-300 rounded-full ${i === current ? 'w-5 h-2 bg-[#F97316]' : 'w-2 h-2 bg-white/40 hover:bg-white/70'}`}
+                      aria-label={`Slide ${i + 1}`}
                     />
                   ))}
                 </div>
+              </div>
+
+              {/* Bottom info strip */}
+              <div className="mt-4 flex items-center justify-between px-1">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                  <span className="text-blue-200 text-xs">AP State Board Affiliated</span>
+                </div>
+                <span className="text-blue-300 text-xs">Classes I – X</span>
               </div>
             </motion.div>
 
@@ -237,17 +254,17 @@ export default function HeroSection() {
 
         {/* Bottom wave */}
         <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
             <path d="M0 60L60 51.7C120 43.3 240 26.7 360 23.3C480 20 600 30 720 33.3C840 36.7 960 33.3 1080 28.3C1200 23.3 1320 16.7 1380 13.3L1440 10V60H0Z" fill="#F9FAFB" />
           </svg>
         </div>
       </section>
 
-      {/* ── Video Modal ─────────────────────────────────────────────────── */}
+      {/* ── Video Modal ──────────────────────────────────────────────── */}
       <AnimatePresence>
         {videoOpen && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -256,18 +273,18 @@ export default function HeroSection() {
           >
             <motion.div
               className="relative w-full max-w-4xl"
-              initial={{ scale: 0.92, opacity: 0, y: 16 }}
+              initial={{ scale: 0.93, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.92, opacity: 0, y: 16 }}
+              exit={{ scale: 0.93, opacity: 0, y: 20 }}
               transition={{ duration: 0.22, ease: 'easeOut' }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setVideoOpen(false)}
-                className="absolute -top-12 right-0 w-10 h-10 bg-white/10 hover:bg-[#F97316] rounded-full flex items-center justify-center text-white transition-colors duration-200"
+                className="absolute -top-11 right-0 w-9 h-9 bg-white/10 hover:bg-[#F97316] rounded-full flex items-center justify-center text-white transition-colors"
                 aria-label="Close"
               >
-                <X size={20} />
+                <X size={18} />
               </button>
               <div className="mb-3 flex items-center gap-2">
                 <div className="w-1.5 h-5 bg-[#F97316] rounded-full" />
@@ -282,7 +299,7 @@ export default function HeroSection() {
                   className="w-full h-full"
                 />
               </div>
-              <p className="text-center text-white/40 text-xs mt-3">Press Esc or click outside to close</p>
+              <p className="text-center text-white/30 text-xs mt-3">Press Esc or tap outside to close</p>
             </motion.div>
           </motion.div>
         )}
