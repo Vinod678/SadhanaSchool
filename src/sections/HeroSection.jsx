@@ -31,11 +31,11 @@ export default function HeroSection() {
   const totalSlides = 1 + galleryImages.length
 
   useEffect(() => {
-    // Slide 0 (video banner) gets 8 s; all other slides get 4 s
+    if (videoOpen) return  // pause slideshow while modal is open
     const delay = current === 0 ? 8000 : 4000
     const t = setTimeout(() => setCurrent(p => (p + 1) % totalSlides), delay)
     return () => clearTimeout(t)
-  }, [current, totalSlides])
+  }, [current, totalSlides, videoOpen])
 
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') setVideoOpen(false) }
@@ -44,8 +44,8 @@ export default function HeroSection() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = videoOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    document.body.classList.toggle('menu-open', videoOpen)
+    return () => document.body.classList.remove('menu-open')
   }, [videoOpen])
 
   return (
@@ -53,14 +53,6 @@ export default function HeroSection() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <section className="relative bg-gradient-to-br from-[#061e36] via-[#0B3C6D] to-[#0d4a87] min-h-[92vh] flex items-center overflow-hidden">
 
-        {/* Background texture / blobs */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#F97316]/10 blur-[120px]" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-blue-400/10 blur-[100px]" />
-          {/* Subtle grid pattern */}
-          <div className="absolute inset-0 opacity-[0.03]"
-            style={{ backgroundImage: 'repeating-linear-gradient(0deg,#fff 0,#fff 1px,transparent 1px,transparent 60px),repeating-linear-gradient(90deg,#fff 0,#fff 1px,transparent 1px,transparent 60px)' }} />
-        </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

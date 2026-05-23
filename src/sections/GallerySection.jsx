@@ -11,8 +11,9 @@ const CATEGORY_COLORS = {
   Events:     'bg-orange-100 text-orange-700',
 }
 
+const preview = schoolData.gallery.slice(0, 6)
+
 export default function GallerySection() {
-  const preview = schoolData.gallery.slice(0, 6)
 
   return (
     <section className="py-20 bg-white">

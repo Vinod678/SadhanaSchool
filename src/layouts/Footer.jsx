@@ -85,7 +85,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#F97316] mt-0.5 shrink-0" />
                 <span className="text-blue-100 text-sm leading-relaxed">
-                  Etikoppaka,<br />Anakapalli Dist., AP – 531082
+                  Etikoppaka,<br />Anakapalli Dist, Andhra Pradesh, <br/> Pincode: 531082
                 </span>
               </li>
               <li className="flex items-center gap-3">

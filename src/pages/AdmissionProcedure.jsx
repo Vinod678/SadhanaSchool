@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { Phone, ArrowRight, FileCheck, MessageCircle, School, FileText, ClipboardCheck, PartyPopper } from 'lucide-react'
+import { FileCheck, MessageCircle, School, FileText, ClipboardCheck, PartyPopper } from 'lucide-react'
 import PageWrapper from '../layouts/PageWrapper'
+import CTASection from '../sections/CTASection'
 
 const steps = [
   {
@@ -122,9 +123,9 @@ export default function AdmissionProcedure() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {documents.map((doc, i) => (
+            {documents.map((doc) => (
               <motion.div
-                key={i}
+                key={doc}
                 className="flex items-start gap-3 p-4 bg-white rounded-xl border border-gray-100 shadow-sm"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -141,37 +142,7 @@ export default function AdmissionProcedure() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-[#0B3C6D] to-[#1a5fa3]">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
-              Ready to Take the First Step?
-            </h2>
-            <p className="text-blue-200 text-sm mb-8">
-              Contact our admissions office or visit us today. Our team is happy to guide you through every step.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="tel:+919949135613"
-                className="inline-flex items-center gap-2 bg-[#F97316] hover:bg-[#ea6c0a] text-white px-6 py-3 rounded-xl font-bold text-sm transition-colors shadow-lg"
-              >
-                <Phone size={15} /> Call +91 99491 35613
-              </a>
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3 rounded-xl font-bold text-sm transition-colors"
-              >
-                Send Enquiry <ArrowRight size={15} />
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <CTASection />
     </PageWrapper>
   )
 }

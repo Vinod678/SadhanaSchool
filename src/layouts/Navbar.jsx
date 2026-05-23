@@ -26,7 +26,6 @@ const navItems = [
       { label: 'FAQ', to: '/faq', desc: 'Common questions answered' },
     ],
   },
-  // { label: 'Facilities', to: '/facilities' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'News & Events', to: '/news' },
   { label: 'Contact', to: '/contact' },
@@ -57,6 +56,9 @@ export default function Navbar() {
     setOpen(false)
     setMobileExpanded(null)
   }, [location.pathname])
+
+  // Clear pending close timer on unmount to prevent setState on unmounted component
+  useEffect(() => () => clearTimeout(closeTimer.current), [])
 
   const handleLogoClick = (e) => {
     e.preventDefault()
@@ -115,7 +117,7 @@ export default function Navbar() {
       </div>
 
       {/* Main navbar */}
-      <header className={`sticky top-0 z-40 w-full transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-white'}`}>
+      <header className={`sticky top-0 z-40 w-full bg-white transition-all duration-300 ${scrolled ? 'shadow-lg' : ''}`}>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
 

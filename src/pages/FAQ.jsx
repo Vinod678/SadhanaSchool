@@ -99,7 +99,7 @@ export default function FAQ() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-4">
             {faqs.map((item, i) => (
-              <FAQItem key={i} q={item.q} a={item.a} index={i} />
+              <FAQItem key={item.q} q={item.q} a={item.a} index={i} />
             ))}
           </div>
         </div>

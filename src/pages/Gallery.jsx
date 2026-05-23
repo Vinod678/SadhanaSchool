@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight, ZoomIn, ArrowLeft, FolderOpen, Images } from 'lucide-react'
 import PageWrapper from '../layouts/PageWrapper'
-import SectionTitle from '../components/SectionTitle'
 import schoolData from '../data/schoolData.json'
 
 const CATEGORIES = ['All', 'Academics', 'Sports', 'Facilities', 'Achievements', 'Events']
@@ -20,6 +19,20 @@ export default function Gallery() {
   const [openAlbum, setOpenAlbum] = useState(null)
   const [lightbox, setLightbox] = useState(null) // { images, index }
   const thumbStripRef = useRef(null)
+  const sectionRef = useRef(null)
+
+  const scrollToSection = () =>
+    sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+  const handleOpenAlbum = (album) => {
+    scrollToSection()
+    setTimeout(() => setOpenAlbum(album), 320)
+  }
+
+  const handleCloseAlbum = () => {
+    scrollToSection()
+    setTimeout(() => setOpenAlbum(null), 320)
+  }
 
   const filteredAlbums = activeCategory === 'All'
     ? schoolData.gallery
@@ -70,21 +83,16 @@ export default function Gallery() {
 
   // Lock body scroll while lightbox is open
   useEffect(() => {
-    document.body.style.overflow = lightbox ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    document.body.classList.toggle('menu-open', !!lightbox)
+    return () => document.body.classList.remove('menu-open')
   }, [lightbox])
 
   const currentImage = lightbox ? lightbox.images[lightbox.index] : null
 
   return (
-    <PageWrapper title="Gallery" subtitle="Explore our albums of school life, events, and achievements">
-      <section className="py-20 bg-white">
+    <PageWrapper title="Life at Sadhana School" subtitle="Explore our albums of school life, events, and achievements" breadcrumb="Gallery">
+      <section ref={sectionRef} className="py-10 bg-[#F9FAFB]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            badge="Photo Gallery"
-            title="Life at Sadhana School"
-            subtitle="Browse albums by category — click any album to see the full photo collection."
-          />
 
           <AnimatePresence mode="wait">
             {openAlbum === null ? (
@@ -92,52 +100,52 @@ export default function Gallery() {
               /* ── Album Grid View ─────────────────────────────────── */
               <motion.div
                 key="album-grid"
-                initial={{ opacity: 0, x: -24 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -24 }}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.25 }}
               >
                 {/* Category filter pills */}
-                <div className="flex flex-wrap gap-3 justify-center mb-10">
-                  {CATEGORIES.map(cat => {
-                    const count = cat === 'All'
-                      ? schoolData.gallery.length
-                      : schoolData.gallery.filter(a => a.category === cat).length
-                    return (
-                      <button
-                        key={cat}
-                        onClick={() => setActiveCategory(cat)}
-                        className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                          activeCategory === cat
-                            ? 'bg-[#0B3C6D] text-white shadow-md scale-105'
-                            : 'bg-gray-100 text-gray-600 hover:bg-blue-50 hover:text-[#0B3C6D]'
-                        }`}
-                      >
-                        {cat}
-                        <span className={`ml-1.5 text-xs ${activeCategory === cat ? 'text-white/70' : 'text-gray-400'}`}>
-                          ({count})
-                        </span>
-                      </button>
-                    )
-                  })}
+                <div className="flex flex-wrap gap-2 mb-8">
+                    {CATEGORIES.map(cat => {
+                      const count = cat === 'All'
+                        ? schoolData.gallery.length
+                        : schoolData.gallery.filter(a => a.category === cat).length
+                      return (
+                        <button
+                          key={cat}
+                          onClick={() => setActiveCategory(cat)}
+                          className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
+                            activeCategory === cat
+                              ? 'bg-[#0B3C6D] text-white shadow-md'
+                              : 'bg-white text-gray-600 border border-gray-200 hover:border-[#0B3C6D] hover:text-[#0B3C6D]'
+                          }`}
+                        >
+                          {cat}
+                          <span className={`ml-1 ${activeCategory === cat ? 'text-white/60' : 'text-gray-400'}`}>
+                            {count}
+                          </span>
+                        </button>
+                      )
+                    })}
                 </div>
 
                 {/* Album cards */}
                 <motion.div
                   key={activeCategory}
                   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-                  initial={{ opacity: 0, y: 16 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                 >
                   {filteredAlbums.map((album, i) => (
                     <motion.div
                       key={album.id}
-                      className="group cursor-pointer rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 bg-white"
+                      className="group cursor-pointer rounded-2xl overflow-hidden bg-white shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: i * 0.06 }}
-                      onClick={() => setOpenAlbum(album)}
+                      onClick={() => handleOpenAlbum(album)}
                     >
                       {/* Cover image */}
                       <div className="relative aspect-[4/3] overflow-hidden">
@@ -145,14 +153,21 @@ export default function Gallery() {
                           src={album.cover}
                           alt={album.title}
                           loading="lazy"
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-107"
                         />
-                        <div className="absolute inset-0 bg-[#0B3C6D]/0 group-hover:bg-[#0B3C6D]/40 transition-all duration-300 flex items-center justify-center">
-                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-center">
-                            <FolderOpen size={32} className="mx-auto mb-1 drop-shadow-lg" />
-                            <span className="text-sm font-semibold drop-shadow">Open Album</span>
+                        {/* Persistent bottom gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+                        {/* Hover overlay */}
+                        <div className="absolute inset-0 bg-[#0B3C6D]/0 group-hover:bg-[#0B3C6D]/50 transition-all duration-300 flex items-center justify-center">
+                          <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100 text-white text-center">
+                            <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-2 border border-white/30">
+                              <FolderOpen size={26} className="drop-shadow-lg" />
+                            </div>
+                            <span className="text-sm font-bold drop-shadow">Open Album</span>
                           </div>
                         </div>
+
                         {/* Category badge */}
                         <div className="absolute top-3 left-3">
                           <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${CATEGORY_COLORS[album.category] || 'bg-gray-100 text-gray-700'}`}>
@@ -161,19 +176,18 @@ export default function Gallery() {
                         </div>
                         {/* Photo count */}
                         <div className="absolute top-3 right-3">
-                          <span className="bg-black/60 text-white text-xs font-semibold px-2 py-1 rounded-full flex items-center gap-1">
+                          <span className="bg-black/50 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
                             <Images size={11} />
                             {album.images.length}
                           </span>
                         </div>
-                      </div>
-
-                      {/* Album title */}
-                      <div className="p-4">
-                        <h3 className="text-[#0B3C6D] font-bold text-base group-hover:text-[#F97316] transition-colors duration-200 leading-tight">
-                          {album.title}
-                        </h3>
-                        <p className="text-gray-400 text-xs mt-1">{album.images.length} photos</p>
+                        {/* Title overlay at bottom */}
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h3 className="text-white font-bold text-base leading-tight drop-shadow-md group-hover:text-[#F97316] transition-colors duration-200">
+                            {album.title}
+                          </h3>
+                          <p className="text-white/70 text-xs mt-0.5">{album.images.length} photos</p>
+                        </div>
                       </div>
                     </motion.div>
                   ))}
@@ -193,7 +207,7 @@ export default function Gallery() {
                 {/* Header row */}
                 <div className="flex flex-wrap items-center gap-3 mb-8">
                   <button
-                    onClick={() => setOpenAlbum(null)}
+                    onClick={handleCloseAlbum}
                     className="flex items-center gap-2 text-[#0B3C6D] hover:text-[#F97316] font-semibold text-sm transition-colors duration-200"
                   >
                     <ArrowLeft size={18} />

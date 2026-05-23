@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import logo from '../assets/logo.png'
 
-export default function PageWrapper({ children, title, subtitle, bgImage }) {
+export default function PageWrapper({ children, title, subtitle, bgImage, breadcrumb }) {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -60,7 +60,7 @@ export default function PageWrapper({ children, title, subtitle, bgImage }) {
             >
               <a href="/" className="hover:text-white transition-colors">Home</a>
               <span>/</span>
-              <span className="text-[#F97316]">{title}</span>
+              <span className="text-[#F97316]">{breadcrumb ?? title}</span>
             </motion.div>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-12 bg-[#F9FAFB]" style={{ clipPath: 'ellipse(55% 100% at 50% 100%)' }} />
