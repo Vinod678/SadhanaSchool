@@ -10,7 +10,7 @@
     "affiliatedTo": "Andhra Pradesh State Board of Secondary Education"
   },
   "stats": [
-    { "label": "Students", "value": "600+", "icon": "Users" },
+    { "label": "Students", "value": "500+", "icon": "Users" },
     { "label": "Experienced Teachers", "value": "30+", "icon": "GraduationCap" },
     { "label": "Years of Excellence", "value": "19+", "icon": "Award" },
     { "label": "Pass Rate", "value": "98%", "icon": "TrendingUp" }
@@ -46,43 +46,90 @@
       "id": 1,
       "icon": "Monitor",
       "title": "Smart Classrooms",
-      "description": "Technology-enabled classrooms with interactive boards for engaging, modern learning experiences.",
-      "image": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80"
+      "description": "Technology-enabled classrooms with interactive boards and digital tools that make every lesson engaging, immersive, and future-ready.",
+      "image": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80",
+      "features": [
+        { "icon": "Monitor",     "label": "Interactive Boards",    "desc": "Smart boards in every classroom" },
+        { "icon": "Wifi",        "label": "Wi-Fi Enabled",         "desc": "High-speed internet throughout" },
+        { "icon": "Projector",   "label": "Projector Systems",     "desc": "HD projectors for visual learning" },
+        { "icon": "Volume2",     "label": "Audio-Visual Setup",    "desc": "Speakers & display screens" },
+        { "icon": "BookOpen",    "label": "Digital Curriculum",    "desc": "E-content aligned with AP board" }
+      ]
     },
     {
       "id": 2,
       "icon": "FlaskConical",
       "title": "Science Lab",
-      "description": "Fully equipped science laboratories for Physics, Chemistry, and Biology for hands-on experiments.",
-      "image": "https://images.unsplash.com/photo-1602052577122-f73b9710adba?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "description": "Fully equipped science laboratories for Physics, Chemistry, and Biology — enabling hands-on experiments that spark curiosity and deepen understanding.",
+      "image": "https://images.unsplash.com/photo-1602052577122-f73b9710adba?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "features": [
+        { "icon": "FlaskConical","label": "Physics Lab",           "desc": "Dedicated lab for physics experiments" },
+        { "icon": "TestTube",    "label": "Chemistry Lab",         "desc": "Well-stocked with chemicals & apparatus" },
+        { "icon": "Microscope",  "label": "Biology Lab",           "desc": "Microscopes & biological specimens" },
+        { "icon": "Shield",      "label": "Safety Equipment",      "desc": "Gloves, goggles & fire safety" },
+        { "icon": "PackageOpen", "label": "Experiment Kits",       "desc": "Hands-on kits for every topic" },
+        { "icon": "GraduationCap","label": "Expert Faculty",       "desc": "Trained science teachers" }
+      ]
     },
     {
       "id": 3,
       "icon": "Library",
       "title": "Library",
-      "description": "A rich collection of books, magazines, and digital resources to foster a love for reading and research.",
-      "image": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80"
+      "description": "A rich and welcoming library with thousands of books, magazines, and digital resources — fostering a lifelong love for reading and independent research.",
+      "image": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80",
+      "features": [
+        { "icon": "BookOpen",    "label": "500+ Books",           "desc": "Wide range across all subjects" },
+        { "icon": "Newspaper",   "label": "Magazines & Journals",  "desc": "Daily newspapers & periodicals" },
+        { "icon": "Globe",       "label": "Digital Resources",     "desc": "Online e-library access" },
+        { "icon": "Users",       "label": "Reading Room",          "desc": "Quiet space for focused study" },
+        { "icon": "Search",      "label": "Reference Section",     "desc": "Encyclopedias & reference books" },
+        { "icon": "Star",        "label": "Reading Programs",      "desc": "Guided reading & book clubs" }
+      ]
     },
     {
       "id": 4,
       "icon": "Cpu",
       "title": "Computer Lab",
-      "description": "Modern computer lab with high-speed internet to develop digital literacy and coding skills.",
-      "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80"
+      "description": "A modern computer lab with the latest systems and high-speed internet, developing digital literacy, coding skills, and tech fluency in every student.",
+      "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80",
+      "features": [
+        { "icon": "Monitor",     "label": "20+ Computers",         "desc": "Latest desktops & laptops" },
+        { "icon": "Code",        "label": "Coding Classes",        "desc": "Programming & logic building" },
+        { "icon": "Cpu",         "label": "Latest Software",       "desc": "MS Office, educational apps" },
+        { "icon": "Printer",     "label": "Printer & Scanner",     "desc": "Print & scan facility" },
+        { "icon": "Shield",      "label": "Safe Browsing",         "desc": "Filtered & monitored internet" }
+      ]
     },
     {
       "id": 5,
       "icon": "Trophy",
       "title": "Sports & Games",
-      "description": "Expansive sports grounds and indoor games facilities to promote physical fitness and team spirit.",
-      "image": "https://images.unsplash.com/photo-1771257807779-a72e74deaa11?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "description": "Expansive sports grounds and indoor games facilities promoting physical fitness, teamwork, discipline, and the competitive spirit in every student.",
+      "image": "https://images.unsplash.com/photo-1771257807779-a72e74deaa11?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "features": [
+        { "icon": "Circle",      "label": "Cricket Ground",        "desc": "Full-size cricket pitch & field" },
+        { "icon": "Trophy",      "label": "Volleyball Court",      "desc": "Dedicated court with net" },
+        { "icon": "Users",       "label": "Kabaddi & Kho-Kho",     "desc": "Traditional team sports" },
+        { "icon": "Gamepad2",    "label": "Indoor Games",          "desc": "Chess, carrom & table tennis" },
+        { "icon": "PersonStanding", "label": "Trained PT Coaches", "desc": "Dedicated physical training staff" },
+        { "icon": "Leaf",        "label": "Yoga & Meditation",     "desc": "Daily yoga sessions for all classes" },
+        { "icon": "Star",        "label": "Annual Sports Day",     "desc": "Yearly inter-class competition" }
+      ]
     },
     {
       "id": 6,
       "icon": "Bus",
       "title": "Transport",
-      "description": "Safe, reliable, and GPS-tracked school transport covering all major areas of Etikoppaka.",
-      "image": "https://plus.unsplash.com/premium_photo-1661634073903-2ecdccdfc8a2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "description": "Safe, reliable, and GPS-tracked school transport covering all major areas of Etikoppaka and surrounding villages — ensuring every child travels comfortably and arrives on time.",
+      "image": "https://plus.unsplash.com/premium_photo-1661634073903-2ecdccdfc8a2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "features": [
+        { "icon": "MapPin",    "label": "GPS Tracking",          "desc": "Live location tracking on all buses" },
+        { "icon": "Shield",    "label": "Trained Drivers",        "desc": "Licensed, verified & experienced" },
+        { "icon": "Camera",    "label": "CCTV Surveillance",      "desc": "Cameras installed in every vehicle" },
+        { "icon": "Home",      "label": "Door-to-Door Service",   "desc": "Pickup & drop at your doorstep" },
+        { "icon": "MapPinned", "label": "Full Area Coverage",     "desc": "All areas of Etikoppaka & villages" },
+        { "icon": "Phone",     "label": "Parent Notifications",   "desc": "Real-time alerts for parents" }
+      ]
     }
   ],
     "schoolBanner": [

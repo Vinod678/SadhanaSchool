@@ -19,7 +19,7 @@ const slideVariants = {
 const slideTransition = { duration: 1.2, ease: [0.4, 0, 0.2, 1] }
 
 const stats = [
-  { icon: Users,          value: '600+', label: 'Students'     },
+  { icon: Users,          value: '500+', label: 'Students'     },
   { icon: GraduationCap,  value: '30+',  label: 'Teachers'     },
   { icon: Trophy,         value: '19+',  label: 'Years'        },
   { icon: Star,           value: '98%',  label: 'Pass Rate'    },
@@ -51,7 +51,7 @@ export default function HeroSection() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section className="relative bg-gradient-to-br from-[#061e36] via-[#0B3C6D] to-[#0d4a87] min-h-[92vh] flex items-center overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#061e36] via-[#0B3C6D] to-[#0d4a87] min-h-[88vh] lg:min-h-[92vh] flex items-center overflow-hidden">
 
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 w-full">
@@ -150,7 +150,7 @@ export default function HeroSection() {
 
               {/* Floating badge */}
               <motion.div
-                className="absolute -top-4 -right-3 sm:-right-5 bg-gradient-to-br from-[#F97316] to-[#ea6c0a] text-white rounded-2xl p-3 sm:p-4 shadow-xl shadow-[#F97316]/30 text-center z-20 pointer-events-none"
+                className="absolute -top-4 -right-3 sm:-right-5 bg-gradient-to-br from-[#F97316] to-[#ea6c0a] text-white rounded-2xl p-3 sm:p-4 shadow-xl shadow-[#F97316]/30 text-center z-20 pointer-events-none hidden sm:block"
                 animate={{ y: [0, -8, 0] }}
                 transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
               >
@@ -159,7 +159,7 @@ export default function HeroSection() {
               </motion.div>
 
               {/* Card */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] ring-1 ring-white/10">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-video lg:aspect-[4/3] ring-1 ring-white/10">
                 <AnimatePresence initial={false} mode="sync">
                   {current === 0 ? (
                     <motion.div

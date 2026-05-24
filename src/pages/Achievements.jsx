@@ -60,7 +60,7 @@ const student = [
   {
     icon: Users,
     color: 'bg-blue-50 text-blue-600',
-    stat: '20+',
+    stat: '5+',
     statLabel: 'Students / Year',
     title: 'Navodaya Selections',
     description: 'Over 20 students selected consistently for the past 6 years, reflecting strong foundational learning and preparation.',

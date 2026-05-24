@@ -3,7 +3,6 @@ import Footer from '../layouts/Footer'
 import HeroSection from '../sections/HeroSection'
 import FeaturesSection from '../sections/FeaturesSection'
 import AboutSection from '../sections/AboutSection'
-import StatsSection from '../sections/StatsSection'
 import AchievementsSection from '../sections/AchievementsSection'
 import FacilitiesSection from '../sections/FacilitiesSection'
 import GallerySection from '../sections/GallerySection'
@@ -18,7 +17,6 @@ export default function Home() {
         <HeroSection />
         <FeaturesSection />
         <AboutSection />
-        <StatsSection />
         <AchievementsSection />
         <FacilitiesSection />
         <GallerySection />

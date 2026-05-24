@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight, ZoomIn, ArrowLeft, FolderOpen, Images } from 'lucide-react'
 import PageWrapper from '../layouts/PageWrapper'
@@ -15,6 +16,7 @@ const CATEGORY_COLORS = {
 }
 
 export default function Gallery() {
+  const location = useLocation()
   const [activeCategory, setActiveCategory] = useState('All')
   const [openAlbum, setOpenAlbum] = useState(null)
   const [lightbox, setLightbox] = useState(null) // { images, index }
@@ -23,6 +25,14 @@ export default function Gallery() {
 
   const scrollToSection = () =>
     sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+  // Auto-open an album when navigated here with state (e.g. from home page carousel)
+  useEffect(() => {
+    const id = location.state?.openAlbumId
+    if (!id) return
+    const album = schoolData.gallery.find(a => a.id === id)
+    if (album) setOpenAlbum(album)
+  }, [location.state?.openAlbumId])
 
   const handleOpenAlbum = (album) => {
     scrollToSection()
@@ -91,7 +101,45 @@ export default function Gallery() {
 
   return (
     <PageWrapper title="Life at Sadhana School" subtitle="Explore our albums of school life, events, and achievements" breadcrumb="Gallery">
-      <section ref={sectionRef} className="py-10 bg-[#F9FAFB]">
+      {/* ── Sticky filter bar — only shown on album grid view ──── */}
+      {openAlbum === null && (
+        <div className="sticky top-[60px] sm:top-[68px] z-20 bg-[#F9FAFB]/95 backdrop-blur-md border-b border-gray-200/70 shadow-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div className="flex items-center gap-3">
+              {/* Pills — scrollable on mobile, wrapping on sm+ */}
+              <div className="flex gap-2 overflow-x-auto scrollbar-hide snap-x flex-1 sm:flex-wrap sm:overflow-visible">
+                {CATEGORIES.map(cat => {
+                  const count = cat === 'All'
+                    ? schoolData.gallery.length
+                    : schoolData.gallery.filter(a => a.category === cat).length
+                  return (
+                    <button
+                      key={cat}
+                      onClick={() => setActiveCategory(cat)}
+                      className={`shrink-0 snap-start px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
+                        activeCategory === cat
+                          ? 'bg-[#0B3C6D] text-white shadow-md'
+                          : 'bg-white text-gray-600 border border-gray-200 hover:border-[#0B3C6D] hover:text-[#0B3C6D]'
+                      }`}
+                    >
+                      {cat}
+                      <span className={`ml-1 ${activeCategory === cat ? 'text-white/60' : 'text-gray-400'}`}>
+                        {count}
+                      </span>
+                    </button>
+                  )
+                })}
+              </div>
+              {/* Results count */}
+              <span className="hidden sm:block shrink-0 text-xs text-gray-400 font-medium">
+                {filteredAlbums.length} {filteredAlbums.length === 1 ? 'album' : 'albums'}
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <section ref={sectionRef} className="py-8 sm:py-10 bg-[#F9FAFB]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <AnimatePresence mode="wait">
@@ -105,35 +153,11 @@ export default function Gallery() {
                 exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.25 }}
               >
-                {/* Category filter pills */}
-                <div className="flex flex-wrap gap-2 mb-8">
-                    {CATEGORIES.map(cat => {
-                      const count = cat === 'All'
-                        ? schoolData.gallery.length
-                        : schoolData.gallery.filter(a => a.category === cat).length
-                      return (
-                        <button
-                          key={cat}
-                          onClick={() => setActiveCategory(cat)}
-                          className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
-                            activeCategory === cat
-                              ? 'bg-[#0B3C6D] text-white shadow-md'
-                              : 'bg-white text-gray-600 border border-gray-200 hover:border-[#0B3C6D] hover:text-[#0B3C6D]'
-                          }`}
-                        >
-                          {cat}
-                          <span className={`ml-1 ${activeCategory === cat ? 'text-white/60' : 'text-gray-400'}`}>
-                            {count}
-                          </span>
-                        </button>
-                      )
-                    })}
-                </div>
 
                 {/* Album cards */}
                 <motion.div
                   key={activeCategory}
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                  className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6"
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
@@ -141,52 +165,52 @@ export default function Gallery() {
                   {filteredAlbums.map((album, i) => (
                     <motion.div
                       key={album.id}
-                      className="group cursor-pointer rounded-2xl overflow-hidden bg-white shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                      className="group cursor-pointer rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 active:scale-[0.97] sm:active:scale-100 transition-all duration-300"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: i * 0.06 }}
                       onClick={() => handleOpenAlbum(album)}
                     >
-                      {/* Cover image */}
-                      <div className="relative aspect-[4/3] overflow-hidden">
+                      {/* Cover image — portrait on mobile, landscape on sm+ */}
+                      <div className="relative aspect-[3/4] sm:aspect-[4/3] overflow-hidden">
                         <img
                           src={album.cover}
                           alt={album.title}
                           loading="lazy"
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-107"
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                         {/* Persistent bottom gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                         {/* Hover overlay */}
-                        <div className="absolute inset-0 bg-[#0B3C6D]/0 group-hover:bg-[#0B3C6D]/50 transition-all duration-300 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-[#0B3C6D]/0 group-hover:bg-[#0B3C6D]/45 transition-all duration-300 flex items-center justify-center">
                           <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100 text-white text-center">
-                            <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-2 border border-white/30">
-                              <FolderOpen size={26} className="drop-shadow-lg" />
+                            <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-2 border border-white/30">
+                              <FolderOpen size={22} className="drop-shadow-lg" />
                             </div>
-                            <span className="text-sm font-bold drop-shadow">Open Album</span>
+                            <span className="text-xs font-bold drop-shadow">Open Album</span>
                           </div>
                         </div>
 
                         {/* Category badge */}
-                        <div className="absolute top-3 left-3">
-                          <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${CATEGORY_COLORS[album.category] || 'bg-gray-100 text-gray-700'}`}>
+                        <div className="absolute top-2.5 left-2.5">
+                          <span className={`text-[10px] sm:text-xs font-bold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full ${CATEGORY_COLORS[album.category] || 'bg-gray-100 text-gray-700'}`}>
                             {album.category}
                           </span>
                         </div>
                         {/* Photo count */}
-                        <div className="absolute top-3 right-3">
-                          <span className="bg-black/50 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
-                            <Images size={11} />
+                        <div className="absolute top-2.5 right-2.5">
+                          <span className="bg-black/55 backdrop-blur-sm text-white text-[10px] sm:text-xs font-semibold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full flex items-center gap-1">
+                            <Images size={10} />
                             {album.images.length}
                           </span>
                         </div>
                         {/* Title overlay at bottom */}
-                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <h3 className="text-white font-bold text-base leading-tight drop-shadow-md group-hover:text-[#F97316] transition-colors duration-200">
+                        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+                          <h3 className="text-white font-bold text-sm sm:text-base leading-tight drop-shadow-md group-hover:text-[#F97316] transition-colors duration-200">
                             {album.title}
                           </h3>
-                          <p className="text-white/70 text-xs mt-0.5">{album.images.length} photos</p>
+                          <p className="text-white/65 text-[10px] sm:text-xs mt-0.5">{album.images.length} photos</p>
                         </div>
                       </div>
                     </motion.div>
@@ -205,20 +229,27 @@ export default function Gallery() {
                 transition={{ duration: 0.25 }}
               >
                 {/* Header row */}
-                <div className="flex flex-wrap items-center gap-3 mb-8">
-                  <button
-                    onClick={handleCloseAlbum}
-                    className="flex items-center gap-2 text-[#0B3C6D] hover:text-[#F97316] font-semibold text-sm transition-colors duration-200"
-                  >
-                    <ArrowLeft size={18} />
-                    Back to Albums
-                  </button>
-                  <div className="h-4 w-px bg-gray-300" />
-                  <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${CATEGORY_COLORS[openAlbum.category] || 'bg-gray-100 text-gray-700'}`}>
-                    {openAlbum.category}
-                  </span>
-                  <h2 className="text-xl font-bold text-[#0B3C6D]">{openAlbum.title}</h2>
-                  <span className="text-gray-400 text-sm ml-auto">{openAlbum.images.length} photos</span>
+                <div className="mb-6">
+                  {/* Top: back button + photo count */}
+                  <div className="flex items-center justify-between mb-3">
+                    <button
+                      onClick={handleCloseAlbum}
+                      className="flex items-center gap-2 text-[#0B3C6D] hover:text-[#F97316] font-semibold text-sm transition-colors duration-200 active:scale-95"
+                    >
+                      <ArrowLeft size={18} />
+                      Back to Albums
+                    </button>
+                    <span className="text-gray-400 text-xs font-medium bg-gray-100 px-2.5 py-1 rounded-full">
+                      {openAlbum.images.length} photos
+                    </span>
+                  </div>
+                  {/* Bottom: category badge + title */}
+                  <div className="flex items-center gap-2.5 flex-wrap">
+                    <span className={`text-xs font-bold px-2.5 py-1 rounded-full shrink-0 ${CATEGORY_COLORS[openAlbum.category] || 'bg-gray-100 text-gray-700'}`}>
+                      {openAlbum.category}
+                    </span>
+                    <h2 className="text-lg sm:text-xl font-bold text-[#0B3C6D] leading-tight">{openAlbum.title}</h2>
+                  </div>
                 </div>
 
                 {/* Image grid */}
@@ -226,7 +257,7 @@ export default function Gallery() {
                   {openAlbum.images.map((image, i) => (
                     <motion.div
                       key={image.id}
-                      className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300"
+                      className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer shadow-md hover:shadow-xl active:scale-[0.97] transition-all duration-300"
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.25, delay: i * 0.05 }}
